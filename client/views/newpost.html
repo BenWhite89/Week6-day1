@@ -1,0 +1,13 @@
+
+<ul class="list">
+    <li>
+        Author: <select id="users" ng-model="user" ng-change="onCategoryChange(user)"
+            ng-options="u.firstname + ' ' + u.lastname for u in users"></select><br/><br/>
+        Category: <select id="categories" ng-model="category" ng-change="onCategoryChange(category)"
+            ng-options="c.name for c in categories"></select><br/><br/>
+        <input class="title" type="text" placeholder=" title" ng-model="title"><br/><br/>
+        <textarea name="content" class="content" ng-model="content" placeholder=" content"></textarea><br/><br/>
+        <button ng-disabled="user==='' || category==='' || title==='' || content ===''"
+        class="btn btn-block btn-default" ng-click="createPost()">post</button>
+    </li>
+</ul>

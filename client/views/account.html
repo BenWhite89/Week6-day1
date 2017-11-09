@@ -1,0 +1,30 @@
+<div class="list">
+    <form class="login">
+        <input type="text" ng-model="currentUser.firstname"><br/>
+        <input type="text" ng-model="currentUser.lastname"><br/>
+        <input type="email" ng-model="currentUser.email"><br/>
+        <input type="submit" float="left" class="btn btn-default" ng-click="updateUser()" value="Update">
+        <input type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteUser" value="Delete">
+    </form>
+    <button class="btn btn-default" ng-click="logout()">Log out</button>
+</div>
+
+<div id="deleteUser" class="modal fade" role="dialog" ng-controller="SingleController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Account</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure you want to delete this account?</span>
+            </div>
+            <div class="modal-footer" ng-controller="AccountController">
+                <button type="button" class="btn btn-danger" ng-click="deleteUser()" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

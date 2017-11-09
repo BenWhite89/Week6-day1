@@ -1,0 +1,148 @@
+@orange: #ffbf65;
+@grey: #e9e9e9;
+@hover: #c7c7c7;
+@darkGrey: #5a5858;
+
+li {
+    list-style: none;
+}
+
+body {
+    background-color: @orange;
+}
+
+.header {
+    padding-left: 1em;
+    background-color: @grey;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    color: @darkGrey;
+}
+
+.navbar-brand {
+    padding: 10px;
+}
+
+.navbar-nav {
+    cursor: pointer;
+}
+
+.dropdown .dropdown-menu {
+    -webkit-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -moz-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -ms-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -o-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dropdown.open .dropdown-menu {
+    -webkit-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -moz-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -ms-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -o-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+
+    max-height: 300px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.item:hover {
+    background-color: @hover;
+    color: white;
+}
+
+.item:active {
+    background-color: @darkGrey;
+    color: white;
+}
+
+.list {
+    background-color: @grey;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-top: 4em;
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-bottom: 4em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #000000;
+}
+
+.title {
+    width: 100%;
+}
+
+.content {
+    position: relative;
+    height: 10em;
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+}
+
+.single {
+    width: 80%;
+    padding: 2em;
+    margin: 0;
+}
+
+li input, textarea, button{
+    border-radius: 5px;
+}
+
+.modal-body input {
+    width: 10em;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.modal-backdrop.in {
+    opacity: 0;
+}
+
+.cancel {
+    background-color: white;
+}
+
+.modal-body :last-child {
+    width: 20.4em;
+}
+
+.modal-body {
+    padding-left: 2em;
+}
+
+.modal-header {
+    padding-left: 2em;
+}
+
+.login input {
+    border-radius: 5px;
+}

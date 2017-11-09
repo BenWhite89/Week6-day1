@@ -1,0 +1,14 @@
+{
+    "include": [
+        "server/*.ts",
+        "server/*.d.ts",
+        "client/js/*.ts"
+    ],
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "strict": true,
+        "sourceMap": false
+    }
+}

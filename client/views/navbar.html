@@ -1,0 +1,104 @@
+<div  ng-controller="NavbarController">
+        <div>
+            <h1 class="header">Ben's Blog</h1>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><img src="/images/favicon.png", width="30px" height="30px" class="d-inline-block align-top" alt=""></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown item">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Authors <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="user in users"><a ng-href="/user/{{user.id}}">{{ user.firstname }} {{ user.lastname }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown item">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="category in categories"><a ng-href="/category/{{category.id}}">{{ category.name }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown item">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a ng-href="/compose">Compose</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#newUser">New User</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#newCategory">New Category</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a ng-href="/users">Users</a>
+                        </li>
+                        <li class="item">
+                            <a ng-href="/login">Log in</a>
+                        </li>
+                        <li class="item">
+                            <a ng-href="/users/{{ currentUser }}">{{ currentName }}</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div id="newUser"class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">New User</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder=" first" ng-model="newFirst">
+                        <input type="text" placeholder=" last" ng-model="newLast"><br/>
+                        <input type="text" placeholder=" email" ng-model="newEmail"><br/>
+                        <input type="text" placeholder=" password" ng-model="newPass">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" ng-click="saveUser()" data-dismiss="modal">Save user</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="newCategory" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">New Category</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder=" category" ng-model="newCategory">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" ng-click="saveCategory()" data-dismiss="modal">Save category</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

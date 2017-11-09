@@ -1,0 +1,12 @@
+<ul class="list">
+    <li ng-repeat="post in posts">
+        <div>
+            <span>{{ post.authorFirstName }} {{ post.authorLastName }}</span><br/>
+            <span>{{ post.categoryName}}</span><br/>
+            <span>{{ post.title }}</span><br/>
+            <span>{{ post.createdAt | date: 'short'}}</span><br/>
+            <p><a ng-href="/{{ post.id }}">{{ post.content }}</a></p><br/>
+        </div>
+    </li>
+</ul>
+
