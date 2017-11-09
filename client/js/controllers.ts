@@ -1,18 +1,28 @@
 angular.module('myBlogApp.controllers', ['ngRoute', 'ngResource', 'myBlogApp.factories'])
 
     .controller('NavbarController', ['$scope', '$location', 'Categories', 'Users', 'UserService', function($scope, $location, Categories, Users, UserService) {
-        Users.query(function(data: any) {
-            $scope.users = data;
-        });
+        let refreshUsers = function () {
+            Users.query(function(data: any) {
+                $scope.users = data;
+            });
+        }
 
-        UserService.me().then((success: any) => {
-            $scope.currentUser = success.id;
-            $scope.currentName = `${success.firstname} ${success.lastname}`;
-        });
+        let refreshCategories = function() {
+            Categories.query(function(data: any) {
+                $scope.categories = data;
+            });
+        }
 
-        Categories.query(function(data: any) {
-            $scope.categories = data;
-        });
+        let refreshCurrentUser = function () {
+            UserService.me().then((success: any) => {
+                $scope.currentUser = success.id;
+                $scope.currentName = `${success.firstname} ${success.lastname}`;
+            });
+        }
+
+        refreshCurrentUser();
+        refreshUsers();
+        refreshCategories();
 
         $scope.saveUser = function () {
             let newUser = new Users({
@@ -23,6 +33,7 @@ angular.module('myBlogApp.controllers', ['ngRoute', 'ngResource', 'myBlogApp.fac
             });
             console.log(newUser);
             newUser.$save(function() {
+                refreshUsers();
                 $location.url('/');
             });
 
@@ -33,7 +44,8 @@ angular.module('myBlogApp.controllers', ['ngRoute', 'ngResource', 'myBlogApp.fac
                 categoryName: $scope.newCategory
             });
             newCategory.$save()
-               .then($location.url('/'));
+                .then(refreshCategories())
+                .then($location.url('/'));
         };
     }])
 

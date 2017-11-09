@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as procedures from '../procedures/users.proc';
 import * as auth from '../middleware/auth.mw';
 import * as passport from 'passport';
+import * as utils from '../config/utils';
 import { models } from '../Models/models.d';
 
 let router = express.Router();
@@ -43,11 +44,16 @@ router.route('/')
             });
     })
     .post((req, res) => {
-        procedures.createUser(req.body.firstName, req.body.lastName, req.body.email, req.body.password)
+        let u = req.body;
+        utils.encryptPassword(u.password)
+            .then((hash) => {
+                return procedures.createUser(u.firstName, u.lastName, u.email, hash)
+            })
             .then(function(id) {
                 res.status(201).send(id);
             }, function(err) {
-                res.status(500).send(err);
+                console.log(err);
+                res.sendStatus(500);
             });
     });
 
